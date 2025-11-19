@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BackGround Color Change on Button Click</title>
+    </head>
+    <body>
+        <div class="button_layout">
+            <button name="red">Red</button>
+            <button name="blue">Blue</button>
+            <button name="green">Green</button>
+        </div>
+    </body>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+           button.addEventListener('click', function() {
+            let color = button.getAttribute('name');
+            document.body.style.background = color;
+           });
+        });
+    </script>
+</html>
