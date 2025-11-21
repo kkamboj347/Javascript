@@ -12,6 +12,7 @@
                 text-align: center;
                 display: block;
                 width:100%;
+                color:white;
             }
             body {
                 background-color: black;
@@ -25,11 +26,21 @@
             }
             .container {
                 width: 25rem;
-                height:25rem;
                 background-color: white;
                 padding:10px;
                 border-radius: 10px;
-
+                text-align: center;
+            }
+            button {
+                font-size: 35px;
+                margin-top:5px;
+                width:100%;
+                display: block;
+                color:white;
+                border:none;
+                border-radius: 5px;
+                background-color: black;
+                cursor:pointer;
             }
         </style>
     </head>
@@ -37,9 +48,17 @@
         <h1>Random Color Generator</h1>
         <div class="main">
             <div class="container">
-
+                <h2 id="color-code">#FFF</h2>
+                <button id="btn">Click UP!</button>
             </div>
         </div>
-        
     </body>
+    <script>
+        const getColor = () => {
+            // Hex color code 
+            const randomNumber = Math.random() * 16777215;
+            console.log(randomNumber);   
+        }
+        document.getElementById('btn').addEventListener('click', getColor);
+    </script>
 </html>
