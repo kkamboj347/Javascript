@@ -15,7 +15,7 @@
                 color:white;
             }
             body {
-                background-color: black;
+                background-color: #FFF;
             }
             .main {
                 width:100%;
@@ -56,8 +56,13 @@
     <script>
         const getColor = () => {
             // Hex color code 
-            const randomNumber = Math.random() * 16777215;
-            console.log(randomNumber);   
+            const randomNumber = Math.floor(Math.random() * 16777215);
+            // console.log(randomNumber);   
+            const randonColor = '#'+ randomNumber.toString(16);
+            document.getElementById('color-code').innerText = randonColor;
+            document.body.style.background = randonColor;
+
+            navigator.clipboard.writeText(randonColor);
         }
         document.getElementById('btn').addEventListener('click', getColor);
     </script>
