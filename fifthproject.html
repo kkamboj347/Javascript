@@ -43,13 +43,19 @@
                 position: relative;
                 padding-right: 25px;
                 text-align: justify;
+                margin-top:10px;
+                user-select: none;
               }
               #to-do-box li i {
                 position: absolute;
                 right:10px;
                 top:10px;
               }
-
+              #to-do-box li.done {
+                text-decoration: line-through;
+                color:black;
+                background-color: #95a5a6;
+              }
         </style>
     </head>
     <body>
@@ -57,10 +63,10 @@
             <div class="box">
                 <input type="text" id="item" autofocus placeholder="Writing Something Here....">
                 <ul id="to-do-box">
-                    <li>Create a video
+                   <!--  <li>Create a video
                         <i class="fa fa-times"></i>
                     </li>
-                    <!-- <li></li>
+                    <li></li>
                     <li></li> -->
                 </ul>
             </div>
@@ -68,8 +74,9 @@
     </body>
     <script src="https://kit.fontawesome.com/bf520e6492.js" crossorigin="anonymous"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
         const item = document.querySelector("#item");
-        const toDoBox = document.querySelector("#to-d--box");
+        const toDoBox = document.querySelector("#to-do-box");
         item.addEventListener('keyup', function(event) {
             if(event.key == 'Enter'){
                 addToDO(this.value);
@@ -78,7 +85,20 @@
         });
          const addToDO = (item) => {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `${item} <i class="fa fa-times"></i>`;
+            listItem.innerHTML = `
+            ${item} 
+            <i class="fa fa-times"></i>
+            `;
+            listItem.addEventListener('click', function() {
+                this.classList.toggle("done");
+            });
+            listItem.querySelector('i').addEventListener('click', function() {
+                listItem.remove();
+            });
+            toDoBox.appendChild(listItem);
          }
+
+        });
+        
     </script>
 </html>
