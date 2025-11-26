@@ -67,4 +67,18 @@
         </div>
     </body>
     <script src="https://kit.fontawesome.com/bf520e6492.js" crossorigin="anonymous"></script>
+    <script>
+        const item = document.querySelector("#item");
+        const toDoBox = document.querySelector("#to-d--box");
+        item.addEventListener('keyup', function(event) {
+            if(event.key == 'Enter'){
+                addToDO(this.value);
+                this.value = ""
+            }
+        });
+         const addToDO = (item) => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `${item} <i class="fa fa-times"></i>`;
+         }
+    </script>
 </html>
