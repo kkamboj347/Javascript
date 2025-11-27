@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Git Hub Profile</title>
+        <style>
+            body {
+                background: purple;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            form#form {
+                padding: 20px;
+                width: 100%;
+                text-align: center;
+            }
+
+            input#search {
+                width: 70%;
+                text-align: center;
+                padding: 10px;
+                border-radius: 15px;
+            }
+
+            div#main {     
+                width:500px;
+            }
+
+            .card {
+                background: red;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .card img.avataar {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+
+            .user-info ul.info {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="" id="form">
+            <input type="text" id="search" autofocus placeholder="Search a Github User Here">
+        </form>
+        <div id="main"></div>
+    </body>
+    <script>
+        const main = document.querySelector("#main");
+        const apiUrl = `https://api.github.com/users/`;
+        const getUser = async(username) => {
+             const response = await fetch(apiUrl + username);
+             //console.log(response);
+            const data = await response.json()
+            console.log(data);
+            const card = `
+                <div class="card">
+                    <div>
+                        <img class="avataar" src="${data.avatar_url}">
+                    </div>
+                    <div class="user-info">
+                        <h2>${data.name}</h2>
+                        <p>${data.bio}</p>
+                        <ul class="info">
+                            <li>${data.followers} <strong>Followers</strong></li>
+                            <li>${data.following} <strong>Following</strong></li>
+                            <li>${data.public_repos} <strong>Repos</strong></li>
+                        </ul>
+                        <div id="repos">
+                        </div>
+                    </div>
+                 </div>   
+            `;
+            console.log(card);
+            main.innerHTML =card;
+            getRepos(username);
+        }
+        getUser('Rohan');
+        const getRepos = async (username) => {
+            const repos = document.getElementById('repos');
+            const response = await fetch(apiUrl + username + "/repos");
+            const data = await response.json();
+            data.forEach(element => {
+                const elem = document.createElement('a');
+                elem.classList.add('repo');
+                elem.innerText = element.name;
+                elem.href = element.html_url; // Use html_url, not url
+                elem.target = "_blank";    // Optional: open in new tab
+
+                repos.appendChild(elem);
+            });
+        }
+    </script>
+</html>
