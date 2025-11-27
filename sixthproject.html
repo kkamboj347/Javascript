@@ -44,8 +44,33 @@
 
             .user-info ul.info {
                 margin: 0;
-                padding: 0;
                 list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 10px;
+            }
+            .user-info ul.info li {
+                font-size: 11px;
+                background: black;
+                color: #FFF;
+                padding: 8px;
+                border-radius: 12px;
+            }
+            div#repos {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 5px;
+            }
+
+            a.repo {
+                color: white;
+                background: black;
+                padding: 6px;
+                font-size: 12px;
+                border-radius: 12px;
+                text-decoration: none;
             }
         </style>
     </head>
@@ -91,6 +116,7 @@
             const response = await fetch(apiUrl + username + "/repos");
             const data = await response.json();
             data.forEach(element => {
+                console.log(element);
                 const elem = document.createElement('a');
                 elem.classList.add('repo');
                 elem.innerText = element.name;
