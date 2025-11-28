@@ -75,7 +75,7 @@
         </style>
     </head>
     <body>
-        <form action="" id="form">
+        <form action="" id="form" onSubmit ="return formSubmit()">
             <input type="text" id="search" autofocus placeholder="Search a Github User Here">
         </form>
         <div id="main"></div>
@@ -83,11 +83,12 @@
     <script>
         const main = document.querySelector("#main");
         const apiUrl = `https://api.github.com/users/`;
+        const searchBox = document.getElementById("search");
         const getUser = async(username) => {
              const response = await fetch(apiUrl + username);
              //console.log(response);
             const data = await response.json()
-            console.log(data);
+            //console.log(data);
             const card = `
                 <div class="card">
                     <div>
@@ -106,11 +107,11 @@
                     </div>
                  </div>   
             `;
-            console.log(card);
+            //console.log(card);
             main.innerHTML =card;
             getRepos(username);
         }
-        getUser('Rohan');
+        //getUser('Rohan');
         const getRepos = async (username) => {
             const repos = document.getElementById('repos');
             const response = await fetch(apiUrl + username + "/repos");
@@ -126,5 +127,16 @@
                 repos.appendChild(elem);
             });
         }
+
+        const formSubmit = () => {
+            if(searchBox.value !=  "") {
+                getUser(searchBox.value);
+                searchBox.value = " ";
+            }
+            return false;
+        }
+        searchBox.addEventListener('focusout', () => {
+            formSubmit();
+        });
     </script>
 </html>
