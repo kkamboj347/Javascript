@@ -89,11 +89,21 @@
              note.classList.add('note');
              note.innerHTML =`
                 <div class="tool">
-                    <i class="fas fa-save"></i>
-                    <i class="fas fa-trash"></i>
+                    <i class="save fas fa-save"></i>
+                    <i class="trash fas fa-trash"></i>
                 </div>
                 <textarea></textarea>
              `;
+             note.querySelector('.trash').addEventListener('click', function() {
+                // console.log('remove');
+                note.remove();
+             });
+              note.querySelector('.save').addEventListener('click', function() {
+                saveNote();
+             });
+             const saveNote = () => {
+                console.log('save note');
+             }
              document.querySelector('#main').appendChild(note);
         }
      </script>
