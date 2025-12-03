@@ -31,13 +31,14 @@
                 background-color: #81ecec;
                 display: flex;
                 flex-wrap:wrap;
+                padding-bottom: 50px;
             }
             .note {
                 width:400px;
                 height:400px;
                 margin:15px;
                 background-color: white;
-                margin-top:50px;
+                margin-top:60px;
             }
             .tool {
                 width:100%;
@@ -68,14 +69,32 @@
     <body>
         <button id="addbtn"> <i class="fas fa-plus"></i>Add Note</button>
         <div id="main">
-            <div class="note">
+            <!-- <div class="note">
                 <div class="tool">
                     <i class="fas fa-save"></i>
                     <i class="fas fa-trash"></i>
                 </div>
                 <textarea name="" id=""></textarea>
-            </div>
+            </div> -->
         </div>
     </body>
     <script src="https://kit.fontawesome.com/bf520e6492.js" crossorigin="anonymous"></script>
+    <script>
+        const button = document.querySelector('#addbtn');
+        button.addEventListener('click', function() {
+           addNote();
+        });
+        function addNote() {
+            const note = document.createElement('div');
+             note.classList.add('note');
+             note.innerHTML =`
+                <div class="tool">
+                    <i class="fas fa-save"></i>
+                    <i class="fas fa-trash"></i>
+                </div>
+                <textarea></textarea>
+             `;
+             document.querySelector('#main').appendChild(note);
+        }
+     </script>
 </html>
