@@ -102,7 +102,13 @@
                 saveNote();
              });
              const saveNote = () => {
-                console.log('save note');
+                const notes = document.querySelectorAll('.note textarea');
+                const data = [];
+                notes.forEach((note) => {
+                    data.push(note.value);
+         //           console.log(data);
+                });
+                localStorage.setItem(data);             
              }
              document.querySelector('#main').appendChild(note);
         }
