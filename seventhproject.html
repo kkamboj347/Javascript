@@ -84,6 +84,14 @@
         button.addEventListener('click', function() {
            addNote();
         });
+        (
+            function () {
+                const notes = JSON.parse(localStorage.getItem("notes"));
+                notes.forEach((note) => {
+                    addNote();
+                });           
+            }
+        )();
         function addNote() {
             const note = document.createElement('div');
              note.classList.add('note');
@@ -97,6 +105,7 @@
              note.querySelector('.trash').addEventListener('click', function() {
                 // console.log('remove');
                 note.remove();
+                saveNote();
              });
               note.querySelector('.save').addEventListener('click', function() {
                 saveNote();
@@ -108,9 +117,10 @@
                     data.push(note.value);
          //           console.log(data);
                 });
-                localStorage.setItem(data);             
+                localStorage.setItem("notes", JSON.stringify(data));             
              }
              document.querySelector('#main').appendChild(note);
+             saveNote();
         }
      </script>
 </html>
