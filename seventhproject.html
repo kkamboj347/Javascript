@@ -102,6 +102,9 @@
               note.querySelector('.save').addEventListener('click', function() {
                 saveNote();
              });
+             note.querySelector('textarea').addEventListener('focusout', function() {
+                saveNote();
+             });
              const saveNote = () => {
                 const notes = document.querySelectorAll('.note textarea');
                 const data = [];
@@ -121,11 +124,16 @@
          (
             function () {
                 const notes = JSON.parse(localStorage.getItem("notes"));
-                notes.forEach((note) => {
+                if (notes == null) {
+                    addNote();
+                } else {
+                    notes.forEach((note) => {
                     addNote(note);
-                });       
-                if(note.length ==0 ) {
-                    localStorage.removeItem('notes');
+                });
+                }
+                       
+                if(note.length == 0) {
+                    // localStorage.removeItem('notes');
                 } else {
                     addNote();
                 }
