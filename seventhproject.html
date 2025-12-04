@@ -84,15 +84,7 @@
         button.addEventListener('click', function() {
            addNote();
         });
-        (
-            function () {
-                const notes = JSON.parse(localStorage.getItem("notes"));
-                notes.forEach((note) => {
-                    addNote();
-                });           
-            }
-        )();
-        function addNote() {
+        function addNote(text ="") {
             const note = document.createElement('div');
              note.classList.add('note');
              note.innerHTML =`
@@ -100,7 +92,7 @@
                     <i class="save fas fa-save"></i>
                     <i class="trash fas fa-trash"></i>
                 </div>
-                <textarea></textarea>
+                <textarea>${text}</textarea>
              `;
              note.querySelector('.trash').addEventListener('click', function() {
                 // console.log('remove');
@@ -117,10 +109,27 @@
                     data.push(note.value);
          //           console.log(data);
                 });
-                localStorage.setItem("notes", JSON.stringify(data));             
+                if(data.length === 0) {
+                    localStorage.removeItem('notes');
+                } else {
+                localStorage.setItem("notes", JSON.stringify(data));  
+                }           
              }
              document.querySelector('#main').appendChild(note);
              saveNote();
         }
+         (
+            function () {
+                const notes = JSON.parse(localStorage.getItem("notes"));
+                notes.forEach((note) => {
+                    addNote(note);
+                });       
+                if(note.length ==0 ) {
+                    localStorage.removeItem('notes');
+                } else {
+                    addNote();
+                }
+            }
+        )();
      </script>
 </html>
