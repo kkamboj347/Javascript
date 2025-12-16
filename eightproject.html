@@ -70,6 +70,17 @@
         showMovies(data);
     }   
     getMovies(APIURL);
+    const showMovies = (data) => {
+        movieBox.innerHTML = "";
+        data.results.forEach((result) => {
+            const imagePath = result.poster_path === null? "img/image-missing.png": IMGPATH + result.poster_path;
+            const box = document.createElement("box");
+            box.classList.add('box');
+            box.innerHTML = `
+                <img src="${imagePath}" alt="" />
+            `;
+        })
+    }
     </script>
     <!-- http://127.0.0.1:5500/eightproject.html -->
 </html>
