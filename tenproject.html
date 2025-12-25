@@ -25,7 +25,7 @@
                 <br><br>
                 <input type="button" class="button" value="/" onclick="forms.answer.value += '/'">
                 <input type="button" class="button" value="0" onclick="forms.answer.value += '0'">
-                <input type="button" class="button" value="=" onclick="forms.answer.value += '='">
+                <input type="button" class="button" value="=" onclick="forms.answer.value = eval(forms.answer.value)">
                 
             </form>
         </div>
