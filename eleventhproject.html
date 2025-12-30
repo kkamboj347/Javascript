@@ -172,6 +172,16 @@
             loadQuiz();
         
         // Step 4: Get Selected Answer Function on Button Click
+         const getSelectedOption = () => {
+            let ans_index;
+            answerEle.forEach((currOption, index) => {
+                if(currOption.checked) {
+                    ans_index = index;
+                }
+            });
+            return aans_index;
+         }
+
          submitBtn.addEventListener('click', function() {
             const selectedOptionIndex = getSelectedOption();
          })
