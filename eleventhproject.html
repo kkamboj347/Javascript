@@ -170,6 +170,10 @@
                 options.forEach((currOption, index) => window[`option_${index + 1}`].innerText = currOption);
             }
             loadQuiz();
-
+        
+        // Step 4: Get Selected Answer Function on Button Click
+         submitBtn.addEventListener('click', function() {
+            const selectedOptionIndex = getSelectedOption();
+         })
     </script>
 </html>
