@@ -53,6 +53,7 @@
                 color: #fff;
                 font-size: 1.6rem;
                 border-radius: 20px;
+                cursor: pointer;
             }
             .result {
                 width: 100%;
@@ -157,10 +158,10 @@
         ];
         // step 2 : JAVASCRIPT INITIALIZATION
             const answerEle = document.querySelectorAll('.answer');
-            const [ questionEle, option_1, option_2, option_3, option_4 ] = document.querySelectorAll('#question, #option_1,#option_2,#option_3,#option_4');
+            const [ questionEle, option_1, option_2, option_3, option_4 ] = document.querySelectorAll("#question, #option_1, #option_2, #option_3, #option_4 ");
             const submitBtn = document.querySelector("#submit");
-            const currentQuiz = 0;
-            const score = 0;
+            let currentQuiz = 0;
+            let score = 0;
 
             // step 3: Load Quiz Function
             const loadQuiz = () => {
@@ -173,18 +174,24 @@
         
         // Step 4: Get Selected Answer Function on Button Click
          const getSelectedOption = () => {
-            let ans_index;
-            answerEle.forEach((currOption, index) => {
-                if(currOption.checked) {
-                    ans_index = index;
-                }
-            });
-            return ans_index;
+            // let ans_index;
+            // answerEle.forEach((currOption, index) => {
+            //     if(currOption.checked) {
+            //         ans_index = index;
+            //     }
+            // });
+            // return ans_index;
+            let answerElement = Array.from(answerEle);
+            return answerElement.findIndex((curEle) => curEle.checked);
          }
 
          submitBtn.addEventListener('click', function() {
             const selectedOptionIndex = getSelectedOption();
             console.log(selectedOptionIndex);
+            currentQuiz++;
+            if(currentQuiz < quizData.length) {
+                loadQuiz();
+            }
          })
     </script>
 </html>
