@@ -185,11 +185,17 @@
             return answerElement.findIndex((curEle) => curEle.checked);
          }
 
+         // deselectAnswer
+         const deselectAnswer = () => {
+            return answerEle.forEach((curElem) => curElem.checked == false);
+         }
+
          submitBtn.addEventListener('click', function() {
             const selectedOptionIndex = getSelectedOption();
             console.log(selectedOptionIndex);
             currentQuiz++;
             if(currentQuiz < quizData.length) {
+                deselectAnswer();
                 loadQuiz();
             }
          })
