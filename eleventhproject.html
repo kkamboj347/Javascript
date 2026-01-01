@@ -189,14 +189,24 @@
          const deselectAnswer = () => {
             return answerEle.forEach((curElem) => curElem.checked = false);
          }
-
+         
          submitBtn.addEventListener('click', function() {
             const selectedOptionIndex = getSelectedOption();
-            console.log(selectedOptionIndex);
+            if(selectedOptionIndex == quizData[currentQuiz].correct) {
+                score = score + 1;
+            }
             currentQuiz++;
             if(currentQuiz < quizData.length) {
                 deselectAnswer();
                 loadQuiz();
+            } else {
+                quiz.innerHTML = `
+                    <div class="result">
+                        <h2> 🏆 Your Score: ${score}/${quizData.lenght} Correct Answers! </h2>
+                        <p> Congratulations on Completing the Quiz.🎉 </p>
+                        <button class="reload-button" onclick="location.reload()">Play Again 🔄</button>
+                    </div>
+                `;
             }
          })
     </script>
