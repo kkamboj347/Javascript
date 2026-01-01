@@ -157,6 +157,7 @@
             }
         ];
         // step 2 : JAVASCRIPT INITIALIZATION
+            const quiz = document.querySelector('#quiz');
             const answerEle = document.querySelectorAll('.answer');
             const [ questionEle, option_1, option_2, option_3, option_4 ] = document.querySelectorAll("#question, #option_1, #option_2, #option_3, #option_4 ");
             const submitBtn = document.querySelector("#submit");
@@ -167,7 +168,7 @@
             const loadQuiz = () => {
                 const { question, options } = quizData[currentQuiz]; 
                 console.log(question);
-                questionEle.innerText = question;
+                questionEle.innerText = `${currentQuiz + 1}:${question}`;
                 options.forEach((currOption, index) => window[`option_${index + 1}`].innerText = currOption);
             }
             loadQuiz();
@@ -202,7 +203,7 @@
             } else {
                 quiz.innerHTML = `
                     <div class="result">
-                        <h2> 🏆 Your Score: ${score}/${quizData.lenght} Correct Answers! </h2>
+                        <h2> 🏆 Your Score: ${score}/${quizData.length} Correct Answers! </h2>
                         <p> Congratulations on Completing the Quiz.🎉 </p>
                         <button class="reload-button" onclick="location.reload()">Play Again 🔄</button>
                     </div>
