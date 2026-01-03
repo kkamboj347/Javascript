@@ -35,10 +35,10 @@
                 <label for="nameOnImage">Text On Image: </label><input type="text" name="" id="nameOnImage">
             </div>
             <div class="parent">
-            <label for="backgroundColor">Color On Background: </label><input type="color" name="" id="backgroundColor">
+            <label for="backgroundColor">Color On Background: </label><input type="color" value="#98bc62" class="style" name="" id="backgroundColor">
             </div>
             <div class="parent">
-            <label for="textColor">Color Of Text: </label><input type="color" name="" id="textColor">
+            <label for="textColor">Color Of Text: </label><input type="color" value="#2C5F2D" class="style" name="" id="textColor">
             </div>
             <div class="container">'
                 <img src="" alt="">
@@ -47,5 +47,21 @@
                 <textarea name="" id="urlPath" cols ="20" rows ="10">Link will be available here.</textarea>
             </div>
         </section>
+        <script>
+            const select = document.querySelector('select');
+            const inputAll = document.querySelectorAll("input");
+            const myImg = document.querySelector('img');
+            const textarea = document.querySelector("textarea");
+
+            const createImagePath = () => {
+                let urlPath = `http://via.placeholder.com/${select.value}/${inputAll[0]}`;
+                myImg.src = urlPath;
+                textarea.value = urlPath;
+            }
+
+            inputAll.forEach((curElm) => curElm.addEventListener('change'), createImagePath);
+
+            select.addEventListener('change', createImagePath);
+        </script>
     </body>
 </html>
