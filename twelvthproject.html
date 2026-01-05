@@ -57,11 +57,14 @@
             const removeHashTag = (str) => {
                 return str.replace("#","");
             }
+            const addPlus = (str) => {
+                return str.split(" ").join("+");
+            }
 
             const createImagePath = () => {
 
                 urlObj.size = select.value;
-                urlObj.text = inputAll[0].value;
+                urlObj.text = addPlus(inputAll[0].value);
                 urlObj.bgClr = removeHashTag(inputAll[1].value);
                 urlObj.txtClr = removeHashTag(inputAll[2].value);
 
@@ -69,6 +72,18 @@
                 let urlPath =`http://via.placeholder.com/${urlObj.size}/${urlObj.bgClr}/${urlObj.txtClr}?text=${urlObj.text}`;
                 myImg.src = urlPath;
                 textarea.value = urlPath;
+
+                textarea.focus();
+                textarea.select();
+
+                // copy the selected text to the clipboard 
+                navigator.clipboard.writeText(textarea.value).
+                then(() => {
+                    console.log("Text copied to clipboard");
+                })
+                .catch(err => {
+                    console.log("Error copying text: ",err);
+                });
             }
 
             inputAll.forEach((curElm) => curElm.addEventListener('change', createImagePath));
