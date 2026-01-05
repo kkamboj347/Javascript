@@ -53,8 +53,20 @@
             const myImg = document.querySelector('img');
             const textarea = document.querySelector("textarea");
 
+            let urlObj = {};
+            const removeHashTag = (str) => {
+                return str.replace("#","");
+            }
+
             const createImagePath = () => {
-                let urlPath = `http://via.placeholder.com/${select.value}/${inputAll[0].value}/text=${textarea}`;
+
+                urlObj.size = select.value;
+                urlObj.text = inputAll[0].value;
+                urlObj.bgClr = removeHashTag(inputAll[1].value);
+                urlObj.txtClr = removeHashTag(inputAll[2].value);
+
+                //let urlPath =`http://via.placeholder.com/${select.value}/${inputAll[1].value}/${inputAll[2].value}/text=${inputAll[0].value}`;
+                let urlPath =`http://via.placeholder.com/${urlObj.size}/${urlObj.bgClr}/${urlObj.txtClr}?text=${urlObj.text}`;
                 myImg.src = urlPath;
                 textarea.value = urlPath;
             }
