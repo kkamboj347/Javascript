@@ -54,7 +54,7 @@
             const textarea = document.querySelector("textarea");
 
             const createImagePath = () => {
-                let urlPath = `http://via.placeholder.com/${select.value}/${inputAll[0].value}`;
+                let urlPath = `http://via.placeholder.com/${select.value}/${inputAll[0].value}/text=${textarea}`;
                 myImg.src = urlPath;
                 textarea.value = urlPath;
             }
