@@ -36,5 +36,11 @@
                 "img":"6"
             }
         ];
+        const parentDiv = doucment.querySelector('#card-section');
+        for(let i=0; i < parentDiv.length; i++) {
+            const childDiv = document.createElement('div');
+            childDiv.classList.add('card-block');
+            //childDiv.dataset.name = cardArrays[i];
+        }
    </script>
 </html>
