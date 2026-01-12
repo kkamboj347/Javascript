@@ -13,11 +13,11 @@
                 --border-color: #efc745;
             }
             body {
-                /* display: flex;
+                display: flex;
                 justify-content: center;
                 align-items: center;
                flex-direction: column;
-               gap: 5rem; */
+               gap: 5rem;
                height: 100vh;
                background-color: var(--bg-main) ; 
             }
@@ -74,11 +74,12 @@
                 "img":"6"
             }
         ];
-        const parentDiv = doucment.querySelector('#card-section');
-        for(let i=0; i < parentDiv.length; i++) {
+        const parentDiv = document.querySelector('#card-section');
+        for(let i=0; i < cardArrays.length; i++) {
             const childDiv = document.createElement('div');
-            childDiv.classList.add('card-block');
+            childDiv.classList.add('card');
             //childDiv.dataset.name = cardArrays[i];
+            parentDiv.appendChild(childDiv);
         }
    </script>
 </html>
