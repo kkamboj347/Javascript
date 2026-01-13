@@ -83,7 +83,7 @@
         for(let i=0; i < cardArrays.length; i++) {
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
-            //childDiv.dataset.name = cardArrays[i];
+            childDiv.dataset.name = cardArrays[i].name;
             parentDiv.appendChild(childDiv);
         }
    </script>
