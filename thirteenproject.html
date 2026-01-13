@@ -56,27 +56,39 @@
         let cardArrays = [
             {
                 'name':"CSS",
-                "img":"1"
+                 "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                font-size='120' fill='rgba(0,0,0,0.1)'>1</text></svg>",
             },
             {
                 'name':"HTML",
-                "img":"2",
+                 "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                font-size='120' fill='rgba(0,0,0,0.1)'>2</text></svg>",
             },
             {
                 'name':"JS",
-                "img":"3",
+                 "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                font-size='120' fill='rgba(0,0,0,0.1)'>3</text></svg>",
             },
             {
                 'name':"JQuery",
-                "img":"4",
+                 "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                font-size='120' fill='rgba(0,0,0,0.1)'>4</text></svg>",
             },
             {
                 'name':"Node",
-                "img":"5",
+                "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                font-size='120' fill='rgba(0,0,0,0.1)'>5</text></svg>",
             },
             {
                 'name':"Python",
-                "img":"6"
+                "img":"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>\
+                    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' \
+                    font-size='120' fill='rgba(0,0,0,0.1)'>6</text></svg>"
             }
         ];
         const parentDiv = document.querySelector('#card-section');
@@ -84,6 +96,7 @@
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
             childDiv.dataset.name = cardArrays[i].name;
+            childDiv.style.backgroundImage = `url(${cardArrays[i].name})`;
             parentDiv.appendChild(childDiv);
         }
    </script>
