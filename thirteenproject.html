@@ -96,11 +96,12 @@
         const gameCard = cardArrays.concat(cardArrays);
         console.log(gameCard);
 
-        for(let i=0; i < cardArrays.length; i++) {
+        for(let i=0; i < gameCard.length; i++) {
+            console.log(i);
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
-            childDiv.dataset.name = cardArrays[i].name;
-            const svg = cardArrays[i].img;
+            childDiv.dataset.name = gameCard[i].name;
+            const svg = gameCard[i].img;
             const base64 = btoa(unescape(encodeURIComponent(svg)));
             childDiv.style.backgroundImage =  `url("data:image/svg+xml;base64,${base64}")`;
             // childDiv.style.backgroundImage = `url(${cardArrays[i].img})`;
