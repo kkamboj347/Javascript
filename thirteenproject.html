@@ -96,7 +96,10 @@
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
             childDiv.dataset.name = cardArrays[i].name;
-            childDiv.style.backgroundImage = `url(${cardArrays[i].img})`;
+            const svg = cardArrays[i].img;
+            const base64 = btoa(unescape(encodeURIComponent(svg)));
+            childDiv.style.backgroundImage =  `url("data:image/svg+xml;base64,${base64}")`;
+            // childDiv.style.backgroundImage = `url(${cardArrays[i].img})`;
             parentDiv.appendChild(childDiv);
         }
    </script>
