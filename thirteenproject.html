@@ -92,6 +92,10 @@
             }
         ];
         const parentDiv = document.querySelector('#card-section');
+        // step 2 to duplicate each card 
+        const gameCard = cardArrays.concat(cardArrays);
+        console.log(gameCard);
+
         for(let i=0; i < cardArrays.length; i++) {
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
