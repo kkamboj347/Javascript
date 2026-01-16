@@ -98,22 +98,24 @@
 
         // STEP 3 
         // Note that this method creates a new suffled array instead of modifying the original one.
-         const myNumbers = (array) => {
-            for (let i= array.length - 1; i > 0; i--){
-                let j = Math.floor(Math.random() * (i + 1));
-                let temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-            return array
-         }
-        const suffledChild = myNumbers(gameCard);
-        for(let i=0; i < gameCard.length; i++) {
+        //  const myNumbers = (array) => {
+        //     for (let i= array.length - 1; i > 0; i--){
+        //         let j = Math.floor(Math.random() * (i + 1));
+        //         let temp = array[i];
+        //         array[i] = array[j];
+        //         array[j] = temp;
+        //     }
+        //     return array
+        //  }
+        //const suffledChild = myNumbers(gameCard);
+
+        let suffledChild = Array.from(gameCard).sort(() => 0.5 - Math.random());
+        for(let i=0; i < suffledChild.length; i++) {
             console.log(i);
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
-            childDiv.dataset.name = gameCard[i].name;
-            const svg = gameCard[i].img;
+            childDiv.dataset.name = suffledChild[i].name;
+            const svg = suffledChild[i].img;
             const base64 = btoa(unescape(encodeURIComponent(svg)));
             childDiv.style.backgroundImage =  `url("data:image/svg+xml;base64,${base64}")`;
             // childDiv.style.backgroundImage = `url(${cardArrays[i].img})`;
