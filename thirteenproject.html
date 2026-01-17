@@ -116,10 +116,17 @@
         let suffledChild = Array.from(gameCard).sort(() => 0.5 - Math.random());
         // step 4 
         let clickCount = 0;
+        let firstCard = "";
+        let secondCard = "";  
         parentDiv.addEventListener('click', (event) => {
             let curCard = event.target;
+            clickCount++;
             if(clickCount < 3) {
-                clickCount++;
+                if(clickCount == 1) {
+                    firstCard = curCard.dataset.name;
+                } else {
+                    secondCard = curCard.dataset.name;
+                }
                 curCard.classList.add('card_selected');
             }
             if(curCard.id === "card-section") {
