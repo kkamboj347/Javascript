@@ -155,10 +155,14 @@
                 if(firstCard !=="" && secondCard !== "" ) {
                     if(firstCard === secondCard) {
                         //curCard.classList.add('card_match');
-                        card_matches();
-                        resetGame();
+                        setTimeout(() => {
+                            card_matches();
+                            resetGame();
+                        }, 1000);
                     } else {
-                        resetGame();
+                        setTimeout(() => {
+                            resetGame();
+                        }, 1000);
                     }
                 }
             }
@@ -175,9 +179,16 @@
             childDiv.dataset.name = suffledChild[i].name;
             const svg = suffledChild[i].img;
             const base64 = btoa(unescape(encodeURIComponent(svg)));
-            childDiv.style.backgroundImage =  `url("data:image/svg+xml;base64,${base64}")`;
+            //childDiv.style.backgroundImage =  `url("data:image/svg+xml;base64,${base64}")`;
             // childDiv.style.backgroundImage = `url(${cardArrays[i].img})`;
+            const front_div = document.createElement('div');
+            front_div.classList.add('front-card');
+
+            const back_div = document.createElement('div');
+            back_div.classList.add('back-card');
             parentDiv.appendChild(childDiv);
+            childDiv.appendChild(front_div);
+            childDiv.appendChild(back_div);
         }
    </script>
 </html>
