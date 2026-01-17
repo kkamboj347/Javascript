@@ -44,6 +44,10 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap:2rem;
             }
+            .card_selected {
+                border: 0.2rem solid var(--border-color);
+
+            }
         </style>
     </head>
     <body>
@@ -110,6 +114,19 @@
         //const suffledChild = myNumbers(gameCard);
 
         let suffledChild = Array.from(gameCard).sort(() => 0.5 - Math.random());
+        // step 4 
+        let clickCount = 0;
+        parentDiv.addEventListener('click', (event) => {
+            let curCard = event.target;
+            if(clickCount < 3) {
+                clickCount++;
+                curCard.classList.add('card_selected');
+            }
+            if(curCard.id === "card-section") {
+                return false;
+            }    
+        });
+
         for(let i=0; i < suffledChild.length; i++) {
             console.log(i);
             const childDiv = document.createElement('div');
