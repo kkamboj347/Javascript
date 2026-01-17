@@ -48,6 +48,11 @@
                 border: 0.2rem solid var(--border-color);
 
             }
+            .card_match {
+                border: 0.2rem solid purple;
+
+
+            }
         </style>
     </head>
     <body>
@@ -118,17 +123,32 @@
         let clickCount = 0;
         let firstCard = "";
         let secondCard = "";  
+        // styling the match card 
+        const card_matches = () => {
+            let card_selected = document.querySelectorAll('.card_selected');
+            card_selected.forEach((curElem) => {
+                curElem.classList.add('card_match');
+            })
+        }
         parentDiv.addEventListener('click', (event) => {
             let curCard = event.target;
             clickCount++;
             if(clickCount < 3) {
                 if(clickCount == 1) {
                     firstCard = curCard.dataset.name;
+                    curCard.classList.add('card_selected');
                 } else {
                     secondCard = curCard.dataset.name;
+                    curCard.classList.add('card_selected');
                 }
-                curCard.classList.add('card_selected');
+                if(firstCard !=="" && secondCard !== "" ) {
+                    if(firstCard === secondCard) {
+                        //curCard.classList.add('card_match');
+                        card_matches();
+                    }
+                }
             }
+            
             if(curCard.id === "card-section") {
                 return false;
             }    
