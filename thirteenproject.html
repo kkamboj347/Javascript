@@ -55,7 +55,7 @@
                 padding:2rem;
             }
             .back-card {
-                transform: rotate(180deg);
+                transform: rotateY(180deg);
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -77,12 +77,14 @@
             }
             .card_selected {
                 border: 0.2rem solid var(--border-color);
+                transform: rotateY(180deg);
 
             }
             .card_match {
-                border: 0.2rem solid purple;
-
-
+                /* border: 0.2rem solid purple; */
+            }
+            .card_match .front-card {
+                background-color: var(--bg-card);
             }
         </style>
     </head>
@@ -177,11 +179,11 @@
             clickCount++;
             if(clickCount < 3) {
                 if(clickCount == 1) {
-                    firstCard = curCard.dataset.name;
-                    curCard.classList.add('card_selected');
+                    firstCard = curCard.parentNode.dataset.name;
+                    curCard.parentNode.classList.add('card_selected');
                 } else {
-                    secondCard = curCard.dataset.name;
-                    curCard.classList.add('card_selected');
+                    secondCard = curCard.parentNode.dataset.name;
+                    curCard.parentNode.classList.add('card_selected');
                 }
                 if(firstCard !=="" && secondCard !== "" ) {
                     if(firstCard === secondCard) {
