@@ -123,11 +123,22 @@
         let clickCount = 0;
         let firstCard = "";
         let secondCard = "";  
-        // styling the match card 
+        // step 6 styling the match card 
         const card_matches = () => {
             let card_selected = document.querySelectorAll('.card_selected');
             card_selected.forEach((curElem) => {
                 curElem.classList.add('card_match');
+            })
+        }
+        // step 7 
+        const resetGame = () => {
+            clickCount = 0;
+            firstCard = "";
+            secondCard = "";
+
+            let card_selected = document.querySelectorAll('.card_selected');
+            card_selected.forEach((curElem) => {
+                curElem.classList.remove('card_selected');
             })
         }
         parentDiv.addEventListener('click', (event) => {
@@ -145,6 +156,9 @@
                     if(firstCard === secondCard) {
                         //curCard.classList.add('card_match');
                         card_matches();
+                        resetGame();
+                    } else {
+                        resetGame();
                     }
                 }
             }
@@ -155,7 +169,7 @@
         });
 
         for(let i=0; i < suffledChild.length; i++) {
-            console.log(i);
+           // console.log(i);
             const childDiv = document.createElement('div');
             childDiv.classList.add('card');
             childDiv.dataset.name = suffledChild[i].name;
