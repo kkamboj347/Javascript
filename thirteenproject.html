@@ -21,15 +21,46 @@
                height: 100vh;
                background-color: var(--bg-main) ; 
             }
-            .card {
+            /* .card {
                 width: 10rem;
                 height: 10rem;
                 background-color: var(--bg-card) ; 
                 background-size: contain;
-                border-radius:0.6rem;
+                border-radiusa:0.6rem;
                 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
                 padding: 2rem;
 
+            } */
+             .card {
+                position: relative;
+                transition: all 0.4s linear;
+                transform-style: preserve-3d;
+                padding: 2rem;
+             }
+             .card, 
+             .back-card, 
+             .front-card {
+                height: 10rem;
+                width: 10rem;
+             }
+             .back-card, .front-card {
+                position: absolute;
+                backface-visibility: hidden;
+             }
+             .front-card {
+                background-color: var(--border-color);
+                background-size: contain;
+                border-radius: 0.6rem;
+                box-shadow: rgba(149, 157,165,0.2) 0px 8px 24px;
+                padding:2rem;
+            }
+            .back-card {
+                transform: rotate(180deg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 2rem;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             }
             h1 {
                 color: #fff;
@@ -41,7 +72,7 @@
             }
             #card-section {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 grid-gap:2rem;
             }
             .card_selected {
