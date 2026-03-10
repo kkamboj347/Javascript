@@ -26,7 +26,7 @@
         <div class="button-groups">
             <button data-color="red" style="background-color:red">Red</button>
             <button data-color="blue" style="background-color:blue">Blue</button>
-            <button data-color="Green" style="background-color:green">Green</button>
+            <button data-color="green" style="background-color:green">Green</button>
             <button data-color="yellow" style="background-color:yellow">Yellow</button>
         </div>
         </div>
@@ -36,7 +36,7 @@
         buttons.forEach(button => {
             button.addEventListener('click', function() {
                 const attr = this.getAttribute('data-color');
-                console.log(attr);
+                console.log(attr); 
             });
         });
     </script>
