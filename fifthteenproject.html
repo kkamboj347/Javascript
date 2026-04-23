@@ -47,7 +47,39 @@
                 object-fit: cover;
                 display: block;
             }
-           
+           .portfolio-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            .portfolio-item {
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                transition: 0.3s;
+            }
+            .portfolio-item:hover {
+                transform: translateY(-5px);
+            }
+             .portfolio-item img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                display: block;
+            }
+            .portfolio-content {
+                padding: 15px;
+            }
+            .portfolio-content h3 {
+                margin-bottom: 10px;
+                color: #222;
+            }
+            .portfolio-content p {
+                color: #666;
+                font-size: 14px;
+                line-height: 1.5;
+            }
             /* Mobile View - 2 Columns */
             @media (max-width: 768px) {
                 .portfolio-grid {
